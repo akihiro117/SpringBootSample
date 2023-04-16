@@ -1,16 +1,22 @@
 type Query {
-    bookById(id: ID): Book
+    allRestaurants: [Restaurant]
+    restaurantDetail(id: Int): Restaurant
 }
 
-type Book {
-    id: ID
+type Restaurant {
+    id: Int
     name: String
-    pageCount: Int
-    author: Author
+    address: Address
+    category: Category
 }
 
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+type Address {
+    prefecture: String
+    city: String
+}
+
+# この変数名はクラスのインスタンス変数名と揃える必要がある。
+type Category {
+    id: Int
+    name: String
 }
