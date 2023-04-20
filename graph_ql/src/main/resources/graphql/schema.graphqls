@@ -1,0 +1,22 @@
+type Query {
+    allRestaurants: [Restaurant]
+    restaurantDetail(id: Int): Restaurant
+}
+
+type Restaurant {
+    id: Int
+    name: String
+    address: Address
+    category: Category
+}
+
+type Address {
+    prefecture: String
+    city: String
+}
+
+# この変数名はクラスのインスタンス変数名と揃える必要がある。
+type Category {
+    id: Int
+    name: String
+}
