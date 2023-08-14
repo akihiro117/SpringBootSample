@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    db1:
+      url: jdbc:mysql://localhost:3307/db1
+      username: root
+      password: root
+    db2:
+      url: jdbc:mysql://localhost:3308/db2
+      username: root
+      password: root
