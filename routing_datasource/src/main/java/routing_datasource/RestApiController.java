@@ -16,6 +16,8 @@ public class RestApiController {
     @GetMapping("/{database}/{id}")
     public ResponseEntity<String> index(@PathVariable("database") String database,
                                 @PathVariable("id") Integer id) {
+        DatasourceEnum datasourceEnum = DatasourceEnum.getEnum(database);
+        TargetDatasource.setTargetDataSource(datasourceEnum.getDatasourceName());
         String name = getNameMapper.findByPk(database, id);
         return ResponseEntity.ok("{\"name\", \"" + name + "\"}");
     }
