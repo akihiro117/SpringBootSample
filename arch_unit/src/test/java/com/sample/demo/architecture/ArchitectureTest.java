@@ -10,17 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.*;
 
 public class ArchitectureTest {
+
     @Test
-    public void architectureTest() {
-        JavaClasses classes = new ClassFileImporter().importPackages("com.sample.demo");
+    public void layeredArchitectureTest() {
+        JavaClasses classes = new ClassFileImporter().importPackages("com.sample.demo.layered");
         Architectures.layeredArchitecture()
                 .consideringAllDependencies()
-                .layer("Controller").definedBy("..controller..")
-                .layer("Service").definedBy("..service..")
-                .layer("Infrastructure").definedBy("..infrastructure..")
-                .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
-                .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
-                .whereLayer("Infrastructure").mayOnlyBeAccessedByLayers("Service")
+                .layer("presentation").definedBy("..controller..")
+                .layer("application").definedBy("..service..")
+                .layer("domain").definedBy("..controller..")
+                .layer("infrastructure").definedBy("..infrastructure..")
+                .whereLayer("presentation").mayNotBeAccessedByAnyLayer()
+                .whereLayer("application").mayOnlyBeAccessedByLayers("presentation")
+                .whereLayer("domain").mayOnlyBeAccessedByLayers("application")
+                .whereLayer("infrastructure").mayOnlyBeAccessedByLayers("domain")
                 .check(classes);
     }
 

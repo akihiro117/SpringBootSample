@@ -1,8 +1,8 @@
-package com.sample.demo.controller;
+package com.sample.demo.layerd.controller;
 
-import com.sample.demo.controller.response.UserDetailResponse;
-import com.sample.demo.domain.UserDetail;
-import com.sample.demo.service.UserDetailService;
+import com.sample.demo.layerd.controller.response.UserDetailResponse;
+import com.sample.demo.layerd.domain.UserDetail;
+import com.sample.demo.layerd.service.UserDetailService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

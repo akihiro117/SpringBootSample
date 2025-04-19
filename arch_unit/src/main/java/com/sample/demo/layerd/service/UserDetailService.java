@@ -1,9 +1,9 @@
-package com.sample.demo.service;
+package com.sample.demo.layerd.service;
 
-import com.sample.demo.domain.PersonName;
-import com.sample.demo.domain.UserDetail;
-import com.sample.demo.infrastructure.UserDatabase;
-import com.sample.demo.infrastructure.entity.User;
+import com.sample.demo.layerd.domain.PersonName;
+import com.sample.demo.layerd.domain.UserDetail;
+import com.sample.demo.layerd.infrastructure.UserDatabase;
+import com.sample.demo.layerd.infrastructure.entity.User;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,4 +1,4 @@
-package com.sample.demo.domain;
+package com.sample.demo.layerd.domain;
 
 public record PersonName(String firstName, String lastName) {
     public String getJpFullName() {
