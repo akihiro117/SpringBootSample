@@ -1,4 +1,4 @@
-package com.sample.demo.layerd.controller.response;
+package com.sample.demo.layered.controller.response;
 
 public record UserDetailResponse(Integer userId, String firstName, String lastName) {
 }

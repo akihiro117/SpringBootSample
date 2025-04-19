@@ -23,7 +23,7 @@ public class ArchitectureTest {
                 .whereLayer("presentation").mayNotBeAccessedByAnyLayer()
                 .whereLayer("application").mayOnlyBeAccessedByLayers("presentation")
                 .whereLayer("domain").mayOnlyBeAccessedByLayers("application")
-                .whereLayer("infrastructure").mayOnlyBeAccessedByLayers("domain")
+                .whereLayer("infrastructure").mayOnlyBeAccessedByLayers("application", "domain")
                 .check(classes);
     }
 

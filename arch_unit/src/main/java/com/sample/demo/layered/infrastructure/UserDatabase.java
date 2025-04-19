@@ -1,6 +1,6 @@
-package com.sample.demo.layerd.infrastructure;
+package com.sample.demo.layered.infrastructure;
 
-import com.sample.demo.layerd.infrastructure.entity.User;
+import com.sample.demo.layered.infrastructure.entity.User;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,4 +1,4 @@
-package com.sample.demo.layerd.domain;
+package com.sample.demo.layered.domain;
 
 public record UserDetail(Integer userId, PersonName name) {
 }

@@ -1,4 +1,4 @@
-package com.sample.demo.layerd.infrastructure.entity;
+package com.sample.demo.layered.infrastructure.entity;
 
 public class User {
     private Integer userId;
