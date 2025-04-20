@@ -6,6 +6,7 @@ import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition;
 import com.tngtech.archunit.library.Architectures;
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 public class ArchitectureTest {
@@ -29,10 +30,18 @@ public class ArchitectureTest {
     @Test
     public void prohibitRequestMappingAnnotation() {
         JavaClasses classes
-                = new ClassFileImporter().importPackages("com.sample.demo.controller.");
+                = new ClassFileImporter().importPackages("com.sample.demo.layered.controller");
         ArchRule archRule = ArchRuleDefinition.methods().that()
                 .arePublic().should()
                 .notBeAnnotatedWith(RequestMapping.class);
+        archRule.check(classes);
+    }
+
+    @Test
+    public void serviceClassShouldBeServiceAnnotation() {
+        JavaClasses classes
+                = new ClassFileImporter().importPackages("com.sample.demo.layered.service");
+        ArchRule archRule = ArchRuleDefinition.classes().should().beAnnotatedWith(Service.class);
         archRule.check(classes);
     }
 
