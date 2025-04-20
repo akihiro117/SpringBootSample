@@ -16,6 +16,6 @@ public class UserDetailService {
 
     public UserDetail obtainUserDetail(Integer userId) {
         User user = userDatabase.obtainUser(userId);
-        return new UserDetail(user.getUserId(), new PersonName(user.getFirstName(), user.getLastName()));
+        return new UserDetail(user.userId(), new PersonName(user.firstName(), user.lastName()));
     }
 }

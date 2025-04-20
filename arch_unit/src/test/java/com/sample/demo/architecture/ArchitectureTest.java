@@ -7,7 +7,6 @@ import com.tngtech.archunit.lang.syntax.ArchRuleDefinition;
 import com.tngtech.archunit.library.Architectures;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.bind.annotation.*;
-import java.lang.reflect.*;
 
 public class ArchitectureTest {
 
@@ -37,41 +36,19 @@ public class ArchitectureTest {
         archRule.check(classes);
     }
 
-//    @Test
-//    public void shouldHaveMappingAnnotation() {
-//        JavaClasses classes
-//                = new ClassFileImporter().importPackages("com.sample.demo.controller");
-//        ArchRule archRule = ArchRuleDefinition.methods().that()
-//                .arePublic().should()
-//                .beAnnotatedWith(GetMapping.class)
-//                .orShould()
-//                .beAnnotatedWith(PostMapping.class)
-//                .orShould()
-//                .beAnnotatedWith(PutMapping.class)
-//                .orShould()
-//                .beAnnotatedWith(DeleteMapping.class);
-//        archRule.check(classes);
-//    }
-
     @Test
     public void domainShouldBeRecord() {
         JavaClasses classes
-                = new ClassFileImporter().importPackages("com.sample.demo.domain");
+                = new ClassFileImporter().importPackages("com.sample.demo.layered.domain");
         ArchRule archRule = ArchRuleDefinition.classes().should().beRecords();
         archRule.check(classes);
     }
 
     @Test
-    public void fieldShodNotBePublic() {
+    public void fieldShodBeFinalAndPrivate() {
         JavaClasses classes
-                = new ClassFileImporter().importPackages("com.sample.demo");
-        long publicFieldCount
-                = classes.stream().filter(clazz -> clazz.getAllFields().stream()
-                        .anyMatch(field -> field.reflect().accessFlags()
-                                .contains(AccessFlag.PUBLIC)))
-                .count();
-        if (publicFieldCount > 0) {
-            throw new AssertionError();
-        }
+                = new ClassFileImporter().importPackages("com.sample.demo.layered");
+        ArchRule archRule = ArchRuleDefinition.fields().should().beFinal().andShould().bePrivate();
+        archRule.check(classes);
     }
 }
