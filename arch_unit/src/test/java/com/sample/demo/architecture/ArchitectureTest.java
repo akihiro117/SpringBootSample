@@ -18,11 +18,11 @@ public class ArchitectureTest {
                 .consideringAllDependencies()
                 .layer("presentation").definedBy("..controller..")
                 .layer("application").definedBy("..service..")
-                .layer("domain").definedBy("..controller..")
+                .layer("domain").definedBy("..domain..")
                 .layer("infrastructure").definedBy("..infrastructure..")
                 .whereLayer("presentation").mayNotBeAccessedByAnyLayer()
                 .whereLayer("application").mayOnlyBeAccessedByLayers("presentation")
-                .whereLayer("domain").mayOnlyBeAccessedByLayers("application")
+                .whereLayer("domain").mayOnlyBeAccessedByLayers("presentation", "application")
                 .whereLayer("infrastructure").mayOnlyBeAccessedByLayers("application", "domain")
                 .check(classes);
     }
